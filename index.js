@@ -78,13 +78,14 @@ app.get('/api/notes', (request, res) => {
 });
 
 app.get('/api/notes/:id', (request, response) => {
+  // assignment 3.3
   const id = Number(request.params.id)
   const note = notes.find(note => note.id === id)
 
   if (note) {
     response.json(note)
   } else {
-    response.status(404).end()
+    response.status(404).send({ error: 'Note not found' })
   }
    response.json(note)
 });
