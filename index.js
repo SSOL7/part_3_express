@@ -95,8 +95,8 @@ app.get('/api/notes/:id', (request, response) => {
 app.delete('/api/notes/:id', (request, response) => {
   // assignment 3.4
   const id =  Number(request.params.id);
-  notes = notes.filter(note => note.id !== id)
   if (id) {
+    notes = notes.filter(note => note.id !== id);
     response.send("ok");
   } else {
     response.status(204).send("contact not found");
