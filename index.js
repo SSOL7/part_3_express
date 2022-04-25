@@ -89,8 +89,14 @@ app.get('/api/notes/:id', (request, response) => {
    response.json(note)
 });
 
-app.delete('/api/notes/:id', (req, res) => {
-  res.send('Got a DELETE request at from notes')
+app.delete('/api/notes/:id', (request, response) => {
+  const id =  Number(request.params.id);
+  if (id) {
+    response.send("ok");
+  } else {
+    response.status(204).send("contact not found");
+    response.redirect('/api/notes');
+  }
 });
 
 const PORT = 3001
