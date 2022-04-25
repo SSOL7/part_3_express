@@ -63,6 +63,7 @@ app.get('/', (req, res) => {
 
 app.get('/info', (req, res) => {
 // assignment 3.2
+// assignment 3.8 JSON.stringify(notes)
   res.send('Today is:'+ '' + '' + '' + new Date().toLocaleString('fi-FI') + '<h1>Good morning Angel, you have:</h1>' + '' + notes.length + '' + ':Unread messages' + '<br>' + '<br>' + 'You have' + JSON.stringify(notes) + '' + 'Today');
   return res.send(notes)
 });
