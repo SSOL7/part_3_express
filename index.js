@@ -79,6 +79,7 @@ app.get('/api/notes', (request, res) => {
 
 app.get('/api/notes/:id', (request, response) => {
   // assignment 3.3
+  // convert id to number
   const id = Number(request.params.id)
   const note = notes.find(note => note.id === id)
 
