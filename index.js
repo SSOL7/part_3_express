@@ -1,7 +1,9 @@
 const express = require('express')
 const app = express();
+const cors = require('cors')
 
 app.use(express.json());
+app.use(cors())
 
 let notes = [
   {
@@ -51,6 +53,7 @@ app.post('/api/notes', (request, response) => {
     number: body.number || false,
     date: new Date().toLocaleString('fi-FI'),
     id: generateId(),
+    // important: body.important || false
   }
   notes = notes.concat(note)
   response.json(note)
@@ -74,7 +77,6 @@ app.get('/api/notes', (request, res) => {
   const note = request.body
   note.id = maxId + 1
   notes = notes.concat(note)
-
   res.json(notes)
 });
 
@@ -104,7 +106,8 @@ app.delete('/api/notes/:id', (request, response) => {
   }
 });
 
-const PORT = 3001
+const PORT = process.env.PORT || 3001
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 });
