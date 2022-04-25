@@ -32,6 +32,7 @@ const generateId = () => {
 }
 
 app.post('/api/notes', (request, response) => {
+  // assignment 3.5
   const body = request.body
   if (!body.name || !body.number) {
     return response.status(400).json({
